@@ -5,6 +5,8 @@ import { BsInfoCircle } from "react-icons/bs";
 
 import Loader from './Loader'
 
+import {TransactionContext} from '../context/TransactionContext'
+
 const companyCommonStyles = "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] sm:border-[1px] flex justify-center items-center border-[0.5px] border-black text-sm font-semilight text-black";
 
 const Input = ({ placeholder, name, type, value, handleChange }) => (
@@ -20,11 +22,17 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 
 const Home = () => {
 
-  const connectWallet = () => {
+  const {connectWallet, currentAccount, formData, sendTransaction, handleChange} = useContext(TransactionContext);
 
-  }
-
+ 
   const handleSubmit = () => {
+    const { addressto, amount, keyword, message } = formData;
+
+    e.preventDefault();
+
+    if(!addressto || !amount || !keyword|| !message) return;
+
+    sendTransaction();
 
   }
 
@@ -38,12 +46,12 @@ const Home = () => {
           <p className="text-left mt-5 text-black font-semilight md:w-9/12 w-11/12 text-2xl">
             Buy and sell cryptocurrencies easily and securely on AshKrypt .
           </p>
-          <button
+         {!currentAccount && (<button
           type="button"
           onClick={connectWallet}
           className="flex flex-row justify-center items-center my-5 bg-[#F5B7B1] p-3 rounded-full cursor-pointer hover:bg-[#F1948A] transition ease-linear w-[200px]">
               <p className="text-black text-base font-semibold">Connect Wallet</p>
-          </button>
+          </button>)}
 
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${companyCommonStyles}`}>
@@ -85,10 +93,10 @@ const Home = () => {
           </div>
 
             <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
-                <Input placeholder="Adress To" name="adressto" type="text" handleChange={()=>{}}/>
-                <Input placeholder="Amount (ETH) " name="amount" type="number" handleChange={()=>{}}/>
-                <Input placeholder="KeyWord (GIF)" name="keyword" type="text" handleChange={()=>{}}/>
-                <Input placeholder="Enter Message" name="message" type="text" handleChange={()=>{}}/>
+                <Input placeholder="Adress To" name="adressto" type="text" handleChange={handleChange}/>
+                <Input placeholder="Amount (ETH) " name="amount" type="number" handleChange={handleChange}/>
+                <Input placeholder="KeyWord (GIF)" name="keyword" type="text" handleChange={handleChange}/>
+                <Input placeholder="Enter Message" name="message" type="text" handleChange={handleChange}/>
                 <div className="h-[1px] w-full bg-black my-2"/>
                 {false ? (
                   <Loader />
