@@ -3,6 +3,7 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 
+import {shortenAddress} from '../utils/shortAddress'
 import Loader from './Loader'
 
 import {TransactionContext} from '../context/TransactionContext'
@@ -83,7 +84,11 @@ const Home = () => {
                 </div>
                 <div>
                 <p className="text-grey font-semilight text-sm">
-                  Address
+                  {!currentAccount ? (
+                    <p>Your wallet Address</p>
+                  ): (
+                    <p>{shortenAddress(currentAccount)}</p>
+                  )}
                 </p>
                 <p className="text-grey font-semibold text-lg mt-1">
                   Ethereum
@@ -93,7 +98,7 @@ const Home = () => {
           </div>
 
             <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
-                <Input placeholder="Adress To" name="adressto" type="text" handleChange={handleChange}/>
+                <Input placeholder="Adress To" name="addressto" type="text" handleChange={handleChange}/>
                 <Input placeholder="Amount (ETH) " name="amount" type="number" handleChange={handleChange}/>
                 <Input placeholder="KeyWord (GIF)" name="keyword" type="text" handleChange={handleChange}/>
                 <Input placeholder="Enter Message" name="message" type="text" handleChange={handleChange}/>
