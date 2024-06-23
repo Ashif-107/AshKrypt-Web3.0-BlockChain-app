@@ -23,8 +23,6 @@ This project is a Web3.0 blockchain application with MetaMask wallet integration
 
 ![image](https://github.com/Ashif-107/AshKrypt-Web3.0-BlockChain-app/assets/144139175/34ce3e3b-e9f0-4b7b-8a49-4b169d87b5cb)
 
-After Connecting Wallet
 ![image](https://github.com/Ashif-107/AshKrypt-Web3.0-BlockChain-app/assets/144139175/26bf8277-31c8-4767-b3d6-d7d578c1b763)
 
 
-<a>https://vercel.com/ashif-107s-projects/ash-krypt-web3-0-block-chain-app</a>
