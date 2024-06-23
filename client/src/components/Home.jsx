@@ -25,14 +25,14 @@ const Home = () => {
   const {connectWallet, currentAccount, formData, sendTransaction, handleChange} = useContext(TransactionContext);
 
  
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     const { addressto, amount, keyword, message } = formData;
 
-    e.preventDefault();
+    
+    sendTransaction();
 
     if(!addressto || !amount || !keyword|| !message) return;
 
-    sendTransaction();
 
   }
 
@@ -103,8 +103,8 @@ const Home = () => {
                 ):(
                   <button
                   type="button"
-                  onClick={handleSubmit}
                   className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer transition ease-linear"
+                  onClick={handleSubmit}
                 >
                   Send now
                 </button>
